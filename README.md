@@ -1,5 +1,6 @@
-<!-- Module yang perlu diinstal -->
-pip install tailwind
+<!-- Requirement -->
+pip install -r requirements.txt 
+npm install
 
 <!-- Run di terminal -->
 Project-Algo-PALU/palu: py manage.py runserver
