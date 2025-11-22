@@ -1,5 +1,6 @@
 <!-- Requirement -->
 pip install -r requirements.txt 
+
 npm install
 
 <!-- Run di terminal -->
