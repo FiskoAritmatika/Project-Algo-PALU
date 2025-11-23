@@ -49,24 +49,44 @@
         <!-- Menu List -->
         <nav class="mt-4">
 
-            <a href="/" class="flex px-4 items-center p-3 hover:bg-(--color-primary) hover:text-white cursor-pointer">
-                <i class="bi bi-speedometer2 text-lg"></i>
-                <span class="ml-3 text-sm">Dashboard</span>
+            <a href="/dashboard" class="flex px-4 items-center py-3 
+              {% if request.resolver_match.url_name == 'dashboard' %}
+                  bg-(--color-secondary) text-black hover:text-white
+              {% else %}
+                  bg-white text-black hover:bg-(--color-primary) hover:text-white
+              {% endif %}">
+              <i class="bi bi-speedometer2 text-lg"></i>
+              <span class="ml-3 text-sm">Dashboard</span>
             </a>
 
-            <a href="#" class="flex px-4 items-center p-3 hover:bg-(--color-primary) hover:text-white cursor-pointer">
+            <a href="#" class="flex px-4 items-center py-3 
+              {% if request.resolver_match.url_name == 'mentorship' %}
+                  bg-(--color-secondary) text-black hover:text-white
+              {% else %}
+                  bg-white text-black hover:bg-(--color-primary) hover:text-white
+              {% endif %}">
                 <i class="bi bi-people-fill text-lg"></i>
                 <span class="ml-3 text-sm">Mentorship</span>
             </a>
 
-            <a href="#" class="flex px-4 items-center p-3 hover:bg-(--color-primary) hover:text-white cursor-pointer">
+            <a href="#" class="flex px-4 items-center py-3 
+              {% if request.resolver_match.url_name == 'career' %}
+                  bg-(--color-secondary) text-black hover:text-white
+              {% else %}
+                  bg-white text-black hover:bg-(--color-primary) hover:text-white
+              {% endif %}">
                 <i class="bi bi-suitcase-fill text-lg"></i>
                 <span class="ml-3 text-sm">Career</span>
             </a>
 
-            <a href="/chat" class="flex px-4 items-center p-3 hover:bg-(--color-primary) hover:text-white cursor-pointer">
-                <i class="bi bi-chat-dots-fill text-lg"></i>
-                <span class="ml-3 text-sm">Chat</span>
+            <a href="/chat" class="flex px-4 items-center py-3 
+              {% if request.resolver_match.url_name == 'chat' %}
+                  bg-(--color-secondary) text-black hover:text-white
+              {% else %}
+                  bg-white text-black hover:bg-(--color-primary) hover:text-white
+              {% endif %}">
+              <i class="bi bi-chat-dots-fill text-lg"></i>
+              <span class="ml-3 text-sm">Chat</span>
             </a>
 
             <!-- Dropdown Learning Corner -->
@@ -81,8 +101,18 @@
                 </div>
 
                 <div id="submenu" class="hidden ml-10 space-y-1">
-                    <p class="cursor-pointer p-2 hover:bg-(--color-primary) hover:text-white text-sm"><a href="#">Materi</a></p>
-                    <p class="cursor-pointer p-2 hover:bg-(--color-primary) hover:text-white text-sm"><a href="#">Event</a></p>
+                    <p class="cursor-pointer p-2 text-sm
+                      {% if request.resolver_match.url_name == 'materi' %}
+                          bg-(--color-secondary) text-black hover:text-white
+                      {% else %}
+                          bg-white text-black hover:bg-(--color-primary) hover:text-white
+                      {% endif %}"><a href="#">Materi</a></p>
+                    <p class="cursor-pointer p-2 text-sm
+                      {% if request.resolver_match.url_name == 'event' %}
+                          bg-(--color-secondary) text-black hover:text-white
+                      {% else %}
+                          bg-white text-black hover:bg-(--color-primary) hover:text-white
+                      {% endif %}"><a href="#">Event</a></p>
                 </div>
             </div>
 

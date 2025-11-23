@@ -27,6 +27,6 @@ def root_redirect(request):
 urlpatterns = [
     path('', root_redirect, name='root_redirect'),
     path('admin/', admin.site.urls),
-    path('dashboard/', indexDashboard, name='index'),
-    path('chat/', indexChat, name='index'),
+    path('dashboard/', indexDashboard, name='dashboard'),
+    path('chat/', indexChat, name='chat'),
 ]
