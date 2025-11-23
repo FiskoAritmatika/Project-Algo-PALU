@@ -69,7 +69,7 @@
                 <span class="ml-3 text-sm">Chat</span>
             </a>
 
-            <!-- Dropdown Chatbox -->
+            <!-- Dropdown Learning Corner -->
             <div>
                 <div class="flex px-4 items-center p-3 hover:bg-(--color-primary) hover:text-white cursor-pointer" onclick="toggleDropdown()">
                     <i class="bi bi-chat-left-text-fill text-lg"></i>
@@ -80,7 +80,7 @@
                     </div>
                 </div>
 
-                <div id="submenu" class="hidden ml-10 mt-2 space-y-1">
+                <div id="submenu" class="hidden ml-10 space-y-1">
                     <p class="cursor-pointer p-2 hover:bg-(--color-primary) hover:text-white text-sm"><a href="#">Materi</a></p>
                     <p class="cursor-pointer p-2 hover:bg-(--color-primary) hover:text-white text-sm"><a href="#">Event</a></p>
                 </div>
@@ -94,11 +94,11 @@
         </nav>
     </aside>
 
-    <!-- MAIN CONTENT -->
+    <!-- Hamburger Menu -->
     <div class="flex-1 min-h-screen lg:ml-64 transition-all">
         <i class="bi bi-list text-3xl cursor-pointer lg:hidden mx-5" onclick="toggleSidebar()"></i>
 
-        <!-- PAGE CONTENT -->
+        <!-- Main Content -->
         <main class="p-6">
             {% block content %}
             {% endblock %}
@@ -107,7 +107,7 @@
 
 </div>
 
-<!-- SCRIPT -->
+<!-- Script -->
 <script>
     function toggleSidebar() {
         document.getElementById("sidebar").classList.toggle("-translate-x-64");
