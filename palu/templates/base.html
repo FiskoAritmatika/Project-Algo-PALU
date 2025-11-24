@@ -38,12 +38,12 @@
 <div class="flex">
 
     <!-- Sidebar -->
-    <aside id="sidebar" style="font-weight: 500;" class="fixed top-0 left-0 w-62 bg-white text-black font-poppins h-screen py-4 overflow-y-auto transition-all -translate-x-64 lg:translate-x-0">
+    <aside id="sidebar" style="font-weight: 500;" class="fixed top-0 left-0 w-62 bg-white text-black font-poppins h-screen py-4 overflow-y-auto transition-all -translate-x-64 lg:translate-x-0 shadow-xl">
         <!-- Header -->
         <i class="bi bi-x-lg text-sm cursor-pointer lg:hidden flex justify-end mr-2" onclick="toggleSidebar()"></i>
         <div class="mb-16">
             <a href="/" class="logo flex items-center justify-center"><img src="https://pradita-s3.s3.ap-southeast-3.amazonaws.com/prod/siakad/images/logo_universitas.png" alt="Logo Pradita" class="w-34 h-auto"></a>
-            <span class="flex items-center justify-center  font-poppins text-sm">Pradita Alumni</span>
+            <span class="flex items-center justify-center font-poppins text-sm">Pradita Alumni</span>
         </div>
 
         <!-- Menu List -->
@@ -51,48 +51,48 @@
 
             <a href="/dashboard" class="flex px-4 items-center py-3 
               {% if request.resolver_match.url_name == 'dashboard' %}
-                  bg-(--color-secondary) text-black hover:text-white
+                  bg-(--color-secondary) text-black hover:text-white border-l-6 border-(--color-primary)
               {% else %}
                   bg-white text-black hover:bg-(--color-primary) hover:text-white
               {% endif %}">
-              <i class="bi bi-speedometer2 text-lg"></i>
+              <i class="bi bi-speedometer2 text-md"></i>
               <span class="ml-3 text-sm">Dashboard</span>
             </a>
 
             <a href="#" class="flex px-4 items-center py-3 
               {% if request.resolver_match.url_name == 'mentorship' %}
-                  bg-(--color-secondary) text-black hover:text-white
+                  bg-(--color-secondary) text-black hover:text-white border-l-6 border-(--color-primary)
               {% else %}
                   bg-white text-black hover:bg-(--color-primary) hover:text-white
               {% endif %}">
-                <i class="bi bi-people-fill text-lg"></i>
+                <i class="bi bi-people-fill text-md"></i>
                 <span class="ml-3 text-sm">Mentorship</span>
             </a>
 
             <a href="#" class="flex px-4 items-center py-3 
               {% if request.resolver_match.url_name == 'career' %}
-                  bg-(--color-secondary) text-black hover:text-white
+                  bg-(--color-secondary) text-black hover:text-white border-l-6 border-(--color-primary)
               {% else %}
                   bg-white text-black hover:bg-(--color-primary) hover:text-white
               {% endif %}">
-                <i class="bi bi-suitcase-fill text-lg"></i>
+                <i class="bi bi-briefcase-fill text-md"></i>
                 <span class="ml-3 text-sm">Career</span>
             </a>
 
             <a href="/chat" class="flex px-4 items-center py-3 
               {% if request.resolver_match.url_name == 'chat' %}
-                  bg-(--color-secondary) text-black hover:text-white
+                  bg-(--color-secondary) text-black hover:text-white border-l-6 border-(--color-primary)
               {% else %}
                   bg-white text-black hover:bg-(--color-primary) hover:text-white
               {% endif %}">
-              <i class="bi bi-chat-dots-fill text-lg"></i>
+              <i class="bi bi-chat-dots-fill text-md"></i>
               <span class="ml-3 text-sm">Chat</span>
             </a>
 
             <!-- Dropdown Learning Corner -->
             <div>
                 <div class="flex px-4 items-center p-3 hover:bg-(--color-primary) hover:text-white cursor-pointer" onclick="toggleDropdown()">
-                    <i class="bi bi-chat-left-text-fill text-lg"></i>
+                    <i class="bi bi-chat-left-text-fill text-md"></i>
 
                     <div class="flex justify-between w-full items-center ml-4 text-sm">
                         <span>Learning Corner</span>
@@ -100,24 +100,24 @@
                     </div>
                 </div>
 
-                <div id="submenu" class="hidden ml-10 space-y-1">
-                    <p class="cursor-pointer p-2 text-sm
+                <div id="submenu" class="hidden ml-8 text-sm font-light">
+                    <p class="cursor-pointer p-3
                       {% if request.resolver_match.url_name == 'materi' %}
                           bg-(--color-secondary) text-black hover:text-white
                       {% else %}
-                          bg-white text-black hover:bg-(--color-primary) hover:text-white
+                        bg-white text-black hover:bg-(--color-secondary) transition-all hover:border-l-6 border-(--color-primary)
                       {% endif %}"><a href="#">Materi</a></p>
-                    <p class="cursor-pointer p-2 text-sm
+                    <p class="cursor-pointer p-3
                       {% if request.resolver_match.url_name == 'event' %}
                           bg-(--color-secondary) text-black hover:text-white
                       {% else %}
-                          bg-white text-black hover:bg-(--color-primary) hover:text-white
+                        bg-white text-black hover:bg-(--color-secondary) transition-all hover:border-l-6 border-(--color-primary)
                       {% endif %}"><a href="#">Event</a></p>
                 </div>
             </div>
 
             <a class="flex px-4 items-center p-3 hover:bg-(--color-primary) hover:text-white cursor-pointer">
-                <i class="bi bi-box-arrow-right text-lg"></i>
+                <i class="bi bi-box-arrow-right text-md"></i>
                 <span class="ml-3 text-sm">Logout</span>
             </a>
 
