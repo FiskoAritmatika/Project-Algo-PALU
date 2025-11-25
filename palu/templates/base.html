@@ -101,18 +101,18 @@
                 </div>
 
                 <div id="submenu" class="hidden ml-8 text-sm font-light">
-                    <p class="cursor-pointer p-3
+                    <a href="/materi"><p class="cursor-pointer p-3
                       {% if request.resolver_match.url_name == 'materi' %}
-                          bg-(--color-secondary) text-black hover:text-white
+                          bg-(--color-secondary) text-black border-l-6 border-(--color-primary)
                       {% else %}
                         bg-white text-black hover:bg-(--color-secondary) transition-all hover:border-l-6 border-(--color-primary)
-                      {% endif %}"><a href="#">Materi</a></p>
-                    <p class="cursor-pointer p-3
+                      {% endif %}">Materi</p></a>
+                    <a href="/event"><p class="cursor-pointer p-3
                       {% if request.resolver_match.url_name == 'event' %}
-                          bg-(--color-secondary) text-black hover:text-white
+                          bg-(--color-secondary) text-black border-l-6 border-(--color-primary)
                       {% else %}
                         bg-white text-black hover:bg-(--color-secondary) transition-all hover:border-l-6 border-(--color-primary)
-                      {% endif %}"><a href="#">Event</a></p>
+                      {% endif %}">Event</p></a>
                 </div>
             </div>
 

@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from chat.views import indexChat
 from dashboard.views import indexDashboard
+from learning_corner.views import indexEvent, indexMateri
 
 from django.shortcuts import redirect
 
@@ -29,4 +30,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard/', indexDashboard, name='dashboard'),
     path('chat/', indexChat, name='chat'),
+    path('materi/', indexMateri, name='materi'),
+    path('event/', indexEvent, name='event'),
 ]
