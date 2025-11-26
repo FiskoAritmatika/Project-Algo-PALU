@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Learning Corner - Event{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto py-10 px-4">
+  <h1 class="text-2xl font-bold">{{ materi.title }}</h1>
+  <p class="mt-2 text-gray-600">{{ materi.description }}</p>
+
+  {% if materi.youtube_url %}
+    <!-- Video Wrapper -->
+    <div class="mt-6 relative w-full" style="padding-bottom: 56.25%;">
+      <iframe 
+        class="absolute top-0 left-0 w-full h-full rounded-xl"
+        src="{{ materi.youtube_url }}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+  {% endif %}
+
+  <!-- Button -->
+  <div class="mt-10 flex gap-4">
+    <a href="{% url 'materi' %}" 
+       class="inline-block rounded-lg border border-gray-300 px-6 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50">
+      <i class="bi bi-arrow-left-short"></i>Kembali
+    </a>
+  </div>
+</div>
+{% endblock %}

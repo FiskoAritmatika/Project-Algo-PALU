@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from chat.views import indexChat
 from dashboard.views import indexDashboard
-from learning_corner.views import indexEvent, indexMateri
+from learning_corner.views import indexEvent, indexMateri, detailEvent, detailMateri
 
 from django.shortcuts import redirect
+from django.conf import settings
+from django.conf.urls.static import static
 
 def root_redirect(request):
     return redirect('/dashboard/')
@@ -30,6 +32,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard/', indexDashboard, name='dashboard'),
     path('chat/', indexChat, name='chat'),
-    path('materi/', indexMateri, name='materi'),
-    path('event/', indexEvent, name='event'),
+    path('learning_corner/materi/', indexMateri, name='materi'),
+    path('learning_corner/event/', indexEvent, name='event'),
+    path("event/<int:pk>/", detailEvent, name="detailEvent"),
+    path("materi/<int:pk>/", detailMateri, name="detailMateri"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

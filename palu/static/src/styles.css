@@ -18,6 +18,10 @@
   .font-helvetica {
     font-family: 'Helvetica', sans-serif;
   }
+
+  .font-quicksand {
+    font-family: 'Quicksand', sans-serif;
+  }
 }
 
 :root {

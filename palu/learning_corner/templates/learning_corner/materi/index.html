@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Learning Corner - Materi{% endblock %}
+
+{% block content %}
+
+<h1 class="text-3xl font-normal mb-6">Daftar Materi</h1>
+
+<!-- Grid -->
+<div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+
+  {% for materi in materis %}
+    <div class="rounded-lg border border-gray-200 bg-white shadow-lg overflow-hidden flex flex-col">
+
+      <!-- Thumbnail YouTube -->
+      {% if materi.youtube_id %}
+        <div class="relative w-full" style="padding-bottom: 56.25%;">
+          <img 
+            src="https://img.youtube.com/vi/{{ materi.youtube_id }}/hqdefault.jpg"
+            alt="{{ materi.title }}"
+            class="absolute top-0 left-0 w-full h-full object-cover"
+          >
+        </div>
+      {% endif %}
+
+      <!-- Konten card -->
+      <div class="p-4 flex flex-col grow">
+        <a href="{% url 'detailMateri' materi.id %}"
+           class="text-lg font-semibold text-(--color-primary) hover:underline">
+          {{ materi.title }}
+        </a>
+
+        <p class="mt-2 text-sm text-gray-600 grow">
+          {{ materi.description|truncatewords:20 }}
+        </p>
+
+        <div class="mt-4">
+          <a href="{% url 'detailMateri' materi.id %}"
+             class="inline-block rounded-lg hover:bg-gray-900 border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:text-white w-full text-center">
+            Lihat Video
+          </a>
+        </div>
+      </div>
+
+    </div>
+  {% empty %}
+    <p class="text-gray-500">Belum ada materi.</p>
+  {% endfor %}
+
+</div>
+
+{% endblock %}

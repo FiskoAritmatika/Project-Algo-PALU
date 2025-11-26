@@ -25,6 +25,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+    <!-- Font Quicksand -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
     <!-- Additional Styles -->
     <style>
         /* smooth animation */
@@ -101,13 +106,13 @@
                 </div>
 
                 <div id="submenu" class="hidden ml-8 text-sm font-light">
-                    <a href="/materi"><p class="cursor-pointer p-3
+                    <a href="/learning_corner/materi"><p class="cursor-pointer p-3
                       {% if request.resolver_match.url_name == 'materi' %}
                           bg-(--color-secondary) text-black border-l-6 border-(--color-primary)
                       {% else %}
                         bg-white text-black hover:bg-(--color-secondary) transition-all hover:border-l-6 border-(--color-primary)
                       {% endif %}">Materi</p></a>
-                    <a href="/event"><p class="cursor-pointer p-3
+                    <a href="/learning_corner/event"><p class="cursor-pointer p-3
                       {% if request.resolver_match.url_name == 'event' %}
                           bg-(--color-secondary) text-black border-l-6 border-(--color-primary)
                       {% else %}
