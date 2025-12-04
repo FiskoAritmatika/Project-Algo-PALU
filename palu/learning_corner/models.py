@@ -26,9 +26,6 @@ class Materi(models.Model):
     return self.title
   
   def youtube_id(self):
-    """
-    Ambil video ID dari link YouTube (baik watch?v=... atau embed/...).
-    """
     if not self.youtube_url:
         return None
     url_data = urlparse(self.youtube_url)
@@ -41,6 +38,5 @@ class Materi(models.Model):
         return url_data.path[1:]
     return None
 
-  
   class Meta:
     ordering = ['-created_at']
