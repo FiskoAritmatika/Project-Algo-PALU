@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Register</h3>
+
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Nama:</label>
+    <input type="text" name="nama" required>
+
+    <label>NIM:</label>
+    <input type="text" name="nim" required>
+
+    <label>Role:</label>
+    <select name="role">
+        <option value="mahasiswa">Mahasiswa</option>
+        <option value="alumni">Alumni</option>
+    </select>
+
+    <label>Email:</label>
+    <input type="email" name="email" required>
+
+    <label>Password:</label>
+    <input type="password" name="password" required>
+
+    <button type="submit">Daftar</button>
+</form>
+
+<a href="{% url 'base:login' %}">Sudah punya akun? Login</a>
+
+{% endblock %}
+
+
+
+
+<!--{% extends "base.html" %}
+{% block content %}
+<div class="shadow-wrap">
+ <div class="form-wrap">
+ <h3>Signup </h3>
+<form method="POST">
+ {% csrf_token %}
+ {{form}}
+<button type="submit">Submit</button>
+</form>
+<a class="signup-link" href="{% url "base:login" %}">Login</a>
+</div>
+</div>
+{% endblock content %}a

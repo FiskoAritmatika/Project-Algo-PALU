@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Login</h3>
+
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Email:</label>
+    <input type="email" name="email" required>
+
+    <label>Password:</label>
+    <input type="password" name="password" required>
+
+    <button type="submit">Masuk</button>
+</form>
+
+<a href="{% url 'base:register' %}">Belum punya akun? Daftar</a>
+
+{% endblock %}
+
+
+
+
+<!--{% extends "base.html" %}
+{% block content %}
+<div class="shadow-wrap">
+ <div class="form-wrap">
+  <h3>Login </h3>
+<form method="POST">
+ {% csrf_token %}
+ {{form}}
+ <button type="submit">Submit</button>
+</form>
+<a class="signup-link" href="{% url "base:authView" %}">Signup</a>
+</div>
+</div>
+{% endblock content %}a
