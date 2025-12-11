@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Chats{% endblock %}
+
+{% block content %}
+
+<div class="flex h-[80vh] bg-white rounded-lg shadow overflow-hidden">
+
+    <!-- SIDEBAR CHAT (kiri) -->
+    <div class="w-1/4 border-r overflow-y-auto">
+        <h2 class="text-xl font-semibold p-4">Chats</h2>
+
+        {% for item in chat_partners %}
+            <a href="{% url 'private_chat' item.user.id %}"
+               class="block px-4 py-3 hover:bg-gray-100">
+                <div class="flex justify-between">
+                    <span class="font-medium text-gray-800">{{ item.user.nama }}</span>
+                    <span class="text-gray-400 text-xs">{{ item.last_time|date:"H:i" }}</span>
+                </div>
+                <p class="text-gray-500 text-sm truncate">{{ item.last_message }}</p>
+            </a>
+        {% empty %}
+            <p class="p-4 text-gray-500">Belum ada chat.</p>
+        {% endfor %}
+    </div>
+
+    <!-- AREA CHAT (kanan) -->
+    <div class="flex-1 flex items-center justify-center text-gray-400">
+        <p>Pilih chat untuk mulai percakapan</p>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from chat.views import indexChat
+from users.views import register, login, logout
+from chat.views import private_chat, inbox
 from dashboard.views import indexDashboard
 from learning_corner.views import indexEvent, indexMateri, detailEvent, detailMateri
 
@@ -30,12 +31,20 @@ def root_redirect(request):
 urlpatterns = [
     path('', root_redirect, name='root_redirect'),
     path('admin/', admin.site.urls),
+    
+    # Auth
+    path('register/', register, name='register'),
+    path('login/', login, name='login'),
+    path('logout/', logout, name='logout'),
+    
+    # Pages
     path('dashboard/', indexDashboard, name='dashboard'),
-    path('chat/', indexChat, name='chat'),
+    path('chat/<int:user_id>', private_chat, name='private_chat'),
+    path("chat/", inbox, name="chat_inbox"),
     path('learning_corner/materi/', indexMateri, name='materi'),
     path('learning_corner/event/', indexEvent, name='event'),
-    path("event/<int:pk>/", detailEvent, name="detailEvent"),
-    path("materi/<int:pk>/", detailMateri, name="detailMateri"),
+    path('learning_corner/event/<int:pk>/', detailEvent, name="detailEvent"),
+    path('learning_corner/materi/<int:pk>/', detailMateri, name="detailMateri"),
 ]
 
 if settings.DEBUG:
