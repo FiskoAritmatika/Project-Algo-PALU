@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'dashboard',
     'chat',
     'learning_corner',
+    'mentorship',
+    'career',
 ]
 
 MIDDLEWARE = [

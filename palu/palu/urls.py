@@ -20,6 +20,8 @@ from users.views import register, login, logout
 from chat.views import private_chat, inbox
 from dashboard.views import indexDashboard
 from learning_corner.views import indexEvent, indexMateri, detailEvent, detailMateri
+from mentorship.views import indexMentorship
+from career.views import indexCareer
 
 from django.shortcuts import redirect
 from django.conf import settings
@@ -45,6 +47,8 @@ urlpatterns = [
     path('learning_corner/event/', indexEvent, name='event'),
     path('learning_corner/event/<int:pk>/', detailEvent, name="detailEvent"),
     path('learning_corner/materi/<int:pk>/', detailMateri, name="detailMateri"),
+    path('mentorship/', indexMentorship, name='mentorship'),
+    path('career/', indexCareer, name='career'),
 ]
 
 if settings.DEBUG:
