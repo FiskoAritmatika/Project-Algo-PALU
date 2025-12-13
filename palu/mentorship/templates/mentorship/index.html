@@ -1,8 +1,90 @@
-{% extends "base.html" %}
-{% block title %}Mentorship{% endblock %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
-<h1 class="text-3xl font-bold mb-6">List Mentorship</h1>
+<div class="max-w-3xl mx-auto bg-white shadow-lg rounded-xl p-8 font-poppins">
+
+    <h1 class="text-3xl font-semibold mb-6">Mentorship</h1>
+
+    <!-- Feedback Message -->
+    {% if messages %}
+        {% for msg in messages %}
+            {% if msg.tags == "error" %}
+                <p class="text-red-600 font-medium mb-4">{{ msg }}</p>
+            {% else %}
+                <p class="text-green-600 font-medium mb-4">{{ msg }}</p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <!-- FORM -->
+    <form method="POST" class="space-y-5">
+        {% csrf_token %}
+
+        <!-- Mentor -->
+        <div>
+            <label class="font-medium">Pilih Mentor:</label>
+            <select name="mentor_id" class="w-full mt-1 p-3 border rounded-lg bg-gray-50" required>
+                <option value="">-- pilih mentor --</option>
+                {% for m in mentors %}
+                    <option value="{{ m.id }}">{{ m.nama }} ({{ m.email }})</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Hari -->
+        <div>
+            <label class="font-medium">Hari:</label>
+            <input 
+                type="text" 
+                name="hari" 
+                placeholder="Senin / Selasa / ..." 
+                class="w-full mt-1 p-3 border rounded-lg bg-gray-50"
+                required
+            >
+        </div>
+
+        <!-- Tanggal -->
+        <div>
+            <label class="font-medium">Tanggal:</label>
+            <input 
+                type="date" 
+                name="tanggal" 
+                class="w-full mt-1 p-3 border rounded-lg bg-gray-50"
+                required
+            >
+        </div>
+
+        <!-- Jam -->
+        <div>
+            <label class="font-medium">Jam:</label>
+            <input 
+                type="time" 
+                name="jam" 
+                class="w-full mt-1 p-3 border rounded-lg bg-gray-50"
+                required
+            >
+        </div>
+
+        <!-- Topik -->
+        <div>
+            <label class="font-medium">Topik Bahasan:</label>
+            <textarea 
+                name="topik" 
+                placeholder="Contoh: Belajar CV, Interview, Career Planning"
+                class="w-full mt-1 p-3 border rounded-lg bg-gray-50 h-28"
+                required
+            ></textarea>
+        </div>
+
+        <!-- Submit -->
+        <button 
+            type="submit"
+            class="w-full bg-black-600 text-black py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+            Ajukan Mentoring
+        </button>
+
+</div>
 
 {% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Career{% endblock %}
+
+{% block content %}
+<h2>Mentorship</h2>
+
+{% if messages %}
+  {% for msg in messages %}
+    <p>{{ msg }}</p>
+  {% endfor %}
+{% endif %}
+
+{% if request_data %}
+    {% if request_data.status in "waiting,approved" %}
+        <h3>Status Mentorship</h3>
+        {% if request_data.status == "waiting" %}
+            <p><strong>⏳ Waiting for approval</strong></p>
+        {% elif request_data.status == "approved" %}
+            <p style="color:green;"><strong>✅ Mentorship disetujui</strong></p>
+            <a href="{% url 'private_chat' request_data.mentor.id %}">💬 Chat Mentor</a>
+        {% endif %}
+    {% elif request_data.status == "finished" %}
+        <p style="color:blue;"><strong>🏁 Mentorship selesai</strong></p>
+        <p>Silakan ajukan mentorship baru.</p>
+    {% elif request_data.status == "rejected" %}
+        <p style="color:red;"><strong>❌ Mentorship ditolak</strong></p>
+        <p>Silakan ajukan ulang.</p>
+    {% endif %}
+{% endif %}
+
+{% if not request_data or request_data.status in "finished,rejected" %}
+    <h3>Ajukan Mentorship</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Mentor</label><br>
+        <select name="mentor_id" required>
+            <option value="">-- Pilih Mentor --</option>
+            {% for mentor in mentors %}
+                <option value="{{ mentor.id }}">{{ mentor.nama }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label>Tanggal</label><br>
+        <input type="date" name="tanggal" required><br><br>
+
+        <label>Jam</label><br>
+        <input type="time" name="jam" required><br><br>
+
+        <label>Topik</label><br>
+        <textarea name="topik" required></textarea><br><br>
+
+        <button type="submit">Ajukan Mentorship</button>
+    </form>
+{% endif %}
+
+{% endblock %}

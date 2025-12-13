@@ -22,7 +22,7 @@ from dashboard.views import indexDashboard
 from learning_corner.views import indexEvent, indexMateri, detailEvent, detailMateri
 from mentorship.views import indexMentorship
 from career.views import indexCareer
-
+from mentorship.views import indexMentorship, approve_mentorship, reject_mentorship, finish_mentorship
 from django.shortcuts import redirect
 from django.conf import settings
 from django.conf.urls.static import static
@@ -49,6 +49,10 @@ urlpatterns = [
     path('learning_corner/materi/<int:pk>/', detailMateri, name="detailMateri"),
     path('mentorship/', indexMentorship, name='mentorship'),
     path('career/', indexCareer, name='career'),
+    path('mentorship/', indexMentorship, name='mentorship'),
+    path('mentorship/approve/<int:request_id>/', approve_mentorship, name='approve_mentorship'),
+    path('mentorship/reject/<int:request_id>/', reject_mentorship, name='reject_mentorship'),
+    path("mentorship/finish/<int:request_id>/", finish_mentorship, name="finish_mentorship"),
 ]
 
 if settings.DEBUG:
