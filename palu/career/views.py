@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from users.decorators import user_login_required
+from .models import Career
 
-@user_login_required
-def indexCareer(request):
-    return render(request, 'career/index.html')
+def career_list(request):
+    careers = Career.objects.all()
+    return render(request, 'career/index.html', {
+        'careers': careers
+    })
