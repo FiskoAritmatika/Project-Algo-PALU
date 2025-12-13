@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Mentorship Alumni{% endblock %}
+
+{% block content %}
+<h2>Pengajuan Mentorship</h2>
+
+{% if requests %}
+    {% for r in requests %}
+        <div style="
+            border:1px solid #ddd;
+            padding:15px;
+            margin-bottom:15px;
+            border-radius:6px;
+        ">
+
+            <p><strong>Mahasiswa:</strong> {{ r.mahasiswa.nama }}</p>
+            <p><strong>NIM:</strong> {{ r.mahasiswa.nim }}</p>
+            <p><strong>Email:</strong> {{ r.mahasiswa.email }}</p>
+
+            <hr>
+
+            <p><strong>Topik:</strong> {{ r.topik }}</p>
+            <p><strong>Tanggal:</strong> {{ r.tanggal }}</p>
+            <p><strong>Jam:</strong> {{ r.jam }}</p>
+
+        <p>
+            <strong>Status:</strong>
+            {% if r.status == "waiting" %}
+                <span style="color:orange;">⏳ Waiting</span>
+            {% elif r.status == "approved" %}
+                <span style="color:green;">✅ Approved</span>
+            {% elif r.status == "finished" %}
+                <span style="color:blue;">🏁 Finished</span>
+            {% elif r.status == "rejected" %}
+                <span style="color:red;">❌ Rejected</span>
+            {% endif %}
+        </p>
+
+        {% if r.status == "waiting" %}
+            <!-- TAHAP 1 -->
+            <a href="{% url 'approve_mentorship' r.id %}">✅ Approve</a>
+            <a href="{% url 'reject_mentorship' r.id %}">❌ Reject</a>
+
+        {% elif r.status == "approved" %}
+            <!-- TAHAP 2 -->
+            <a href="{% url 'finish_mentorship' r.id %}"
+            style="
+                padding:6px 12px;
+                background:#2196F3;
+                color:white;
+                border-radius:4px;
+                text-decoration:none;
+            ">
+                🏁 Selesai
+            </a>
+        {% endif %}
+
+
+        </div>
+    {% endfor %}
+{% else %}
+    <p style="color:#777; font-style:italic;">
+        Belum ada mahasiswa yang mengajukan mentorship.
+    </p>
+{% endif %}
+
+{% endblock %}
