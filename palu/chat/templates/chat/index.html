@@ -1,85 +1,46 @@
-{% extends "base.html" %}
-{% block title %}Chats{% endblock %}
+{% extends "chat/inbox.html" %}
 
-{% block content %}
+{% block chat_content %}
 
-<div class="flex h-[80vh] bg-white rounded-lg shadow overflow-hidden">
-
-    <!-- SIDEBAR CHAT (kiri) -->
-    <div class="w-1/4 border-r overflow-y-auto">
-        <h2 class="text-xl font-semibold p-4">Chats</h2>
-
-        {% for item in chat_partners %}
-            <a href="{% url 'private_chat' item.user.id %}"
-               class="block px-4 py-3 hover:bg-gray-100">
-                <div class="flex justify-between">
-                    <span class="font-medium text-gray-800">{{ item.user.nama }}</span>
-                    <span class="text-gray-400 text-xs">{{ item.last_time|date:"H:i" }}</span>
-                </div>
-                <p class="text-gray-500 text-sm truncate">{{ item.last_message }}</p>
-            </a>
-        {% empty %}
-            <p class="p-4 text-gray-500">Belum ada chat.</p>
-        {% endfor %}
-    </div>
-
-    <!-- AREA CHAT (kanan) -->
-    <div class="flex-1 flex flex-col">
-
-        <!-- Header -->
-        <div class="p-4 border-b font-semibold bg-gray-100">
-            {{ other_user.nama }}
-        </div>
-
-        <!-- Chat messages -->
-        <div id="chat-box" class="flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50">
-
-            {% for msg in messages %}
-                {% if msg.sender.id == current_user.id %}
-                    <!-- Bubble kanan -->
-                    <div class="flex justify-end">
-                        <div class="bg-(--color-primary) text-white px-4 py-2 rounded-xl max-w-xs shadow">
-                            <p>{{ msg.message }}</p>
-                            <p class="text-[10px] text-blue-200 mt-1 text-right">
-                                {{ msg.created_at|date:"H:i" }}
-                            </p>
-                        </div>
-                    </div>
-                {% else %}
-                    <!-- Bubble kiri -->
-                    <div class="flex justify-start">
-                        <div class="bg-white border px-4 py-2 rounded-xl max-w-xs shadow">
-                            <p>{{ msg.message }}</p>
-                            <p class="text-[10px] text-gray-400 mt-1">
-                                {{ msg.created_at|date:"H:i" }}
-                            </p>
-                        </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
-
-        </div>
-
-        <!-- Input -->
-        <form method="POST" class="p-4 border-t flex gap-2 bg-white">
-            {% csrf_token %}
-            <input 
-                type="text" 
-                name="message" 
-                placeholder="Ketik pesan..."
-                class="flex-1 border rounded-full px-4 py-2 bg-gray-100 focus:outline-none"
-                required
-            >
-            <button class="bg-(--color-primary) cursor-pointer text-white px-5 py-2 rounded-full">
-                <i class="bi bi-send-fill"></i>
-            </button>
-        </form>
-
-    </div>
-
+<!-- Header -->
+<div class="p-4 border-b font-semibold bg-gray-100">
+    {{ other_user.nama }}
 </div>
 
-<!-- Auto scroll ke bawah -->
+<!-- Chat messages -->
+<div id="chat-box" class="flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50">
+    {% for msg in messages %}
+        {% if msg.sender.id == current_user.id %}
+            <div class="flex justify-end">
+                <div class="bg-(--color-primary) text-white px-4 py-2 rounded-xl max-w-xs shadow">
+                    <p>{{ msg.message }}</p>
+                    <p class="text-[10px] text-blue-200 mt-1 text-right">
+                        {{ msg.created_at|date:"H:i" }}
+                    </p>
+                </div>
+            </div>
+        {% else %}
+            <div class="flex justify-start">
+                <div class="bg-white border px-4 py-2 rounded-xl max-w-xs shadow">
+                    <p>{{ msg.message }}</p>
+                    <p class="text-[10px] text-gray-400 mt-1">
+                        {{ msg.created_at|date:"H:i" }}
+                    </p>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<!-- Input -->
+<form method="POST" class="p-4 border-t flex gap-2 bg-white">
+    {% csrf_token %}
+    <input type="text" name="message" placeholder="Ketik pesan..."class="flex-1 border rounded-full px-4 py-2 bg-gray-100 focus:outline-none"required>
+    <button class="bg-(--color-primary) text-white px-5 py-2 rounded-full">
+        <i class="bi bi-send-fill"></i>
+    </button>
+</form>
+
 <script>
     const chatBox = document.getElementById("chat-box");
     chatBox.scrollTop = chatBox.scrollHeight;
