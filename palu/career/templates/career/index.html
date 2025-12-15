@@ -1,10 +1,14 @@
-<h1>List Career</h1>
+{% extends "base.html" %}
+{% block title %}Career{% endblock %}
 
-{% for c in careers %}
-  <div>
-    <b>{{ c.title }}</b> - {{ c.company }} ({{ c.location }})
-    <p>{{ c.description }}</p>
-  </div>
-{% empty %}
-  <p>Belum ada data.</p>
-{% endfor %}
+{% block content %}
+    {% for c in careers %}
+      <div class=" text-black">
+        <h1 class="text-3xl font-bold">List Career</h1>
+        <p class="mt-2">{{ c.title }} - {{ c.company }} ({{ c.location }})</p>
+        <p class="mt-2">{{ c.description }}</p>
+      </div>
+    {% empty %}
+        <p class=" text-black">Belum ada data.</p>
+    {% endfor %}
+{% endblock %}
